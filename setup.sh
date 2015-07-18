@@ -5,7 +5,7 @@ CHROOT_DIR="bin dev home lib64 usr/bin etc/bash_completion.d"
 CHROOT_CMD="/usr/bin/git /usr/bin/ls /bin/bash /usr/bin/ssh /usr/bin/ssh-keygen"
 
 #--------------------------------------------------
-#
+# install dir
 #--------------------------------------------------
 if [ -e ${CHROOT_HOME} ]; then
   for i in ${CHROOT_DIR}
@@ -17,7 +17,7 @@ else
 fi
 
 #--------------------------------------------------
-#
+# install /etc/git*
 #--------------------------------------------------
 if [ ! -e "${CHROOT_HOME}/etc/bash_completion.d/git" ]; then
   cp -p /etc/bash_completion.d/git ${CHROOT_HOME}/etc/bash_completion.d/
@@ -27,7 +27,7 @@ if [ ! -e "${CHROOT_HOME}/etc/bashrc" ]; then
 fi
 
 #--------------------------------------------------
-#
+# install dev/{tty,null,urandom}
 #--------------------------------------------------
 if [ ! -e "${CHROOT_HOME}/dev/tty" ]; then
   mknod -m 666 "${CHROOT_HOME}/dev/tty" c 5 0
@@ -40,7 +40,7 @@ if [ ! -e "${CHROOT_HOME}/dev/urandom" ]; then
 fi
 
 #--------------------------------------------------
-#
+# copy require libs64
 #--------------------------------------------------
 for command in ${CHROOT_CMD} 
 do
