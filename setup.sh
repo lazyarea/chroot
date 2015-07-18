@@ -2,7 +2,7 @@
 
 CHROOT_HOME=/home/chroot
 CHROOT_DIR="bin dev home lib64 usr/bin etc/bash_completion.d"
-CHROOT_CMD="/usr/bin/git /usr/bin/ls /bin/bash /usr/bin/ssh /usr/bin/ssh-keygen"
+CHROOT_CMD="/usr/bin/git /usr/bin/ls /bin/bash"
 
 #--------------------------------------------------
 # install dir
