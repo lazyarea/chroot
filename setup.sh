@@ -48,10 +48,10 @@ do
   for i in `ldd ${command} | awk '{print $3}' | grep ^\/lib`
     do
      if [[ "${command}" =~ "/usr/bin/" ]]; then
-       echo "cp -a ${command} ${CHROOT_HOME}/usr/bin/"
+       #echo "cp -a ${command} ${CHROOT_HOME}/usr/bin/"
        cp -a ${command} ${CHROOT_HOME}/usr/bin/
      else
-       echo "cp -a ${command} ${CHROOT_HOME}/bin/"
+       #echo "cp -a ${command} ${CHROOT_HOME}/bin/"
        cp -a ${command} ${CHROOT_HOME}/bin/
      fi
 
@@ -60,4 +60,20 @@ do
 
   done
 done
+
+#--------------------------------------------------
+# usage
+#--------------------------------------------------
+echo ""
+echo "ex) exists user."
+echo "mkdir ${CHROOT_HOME}/home/lazyarea"
+echo ""
+
+echo ""
+echo "ex) /etc/ssh/sshd_config"
+echo "Subsystem       sftp    /usr/libexec/openssh/sftp-server"
+echo "Match User lazyarea"
+echo "        X11Forwarding no"
+echo "        AllowTcpForwarding no"
+echo "        ChrootDirectory /home/chroot"
 
