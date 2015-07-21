@@ -1,4 +1,4 @@
-!/bin/sh
+#!/bin/sh
 
 CHROOT_HOME=/home/chroot
 CHROOT_DIR="bin dev home lib64 usr/bin etc/bash_completion.d"
@@ -7,7 +7,7 @@ CHROOT_CMD="/usr/bin/git /usr/bin/ls /bin/bash /usr/bin/rpm"
 #--------------------------------------------------
 # install dir
 #--------------------------------------------------
-if [ -e ${CHROOT_HOME} ]; then
+if [ ! -e ${CHROOT_HOME} ]; then
   for i in ${CHROOT_DIR}
   do
     mkdir -p ${CHROOT_HOME}/$i
@@ -80,7 +80,10 @@ echo "        ChrootDirectory /home/chroot"
 # usage
 #--------------------------------------------------
 echo ""
+echo "ex) install git"
+echo "yum --installroot=${CHROOT_HOME} --releasever=7 install git"
 
+echo ""
 if [  -e "/bin/rbash" ]; then
   echo "/bin/rbash is already exists."
   exit
@@ -93,6 +96,3 @@ echo "chown root. /home/lazyarea/.bash_profile"
 echo "chmod 755 /home/lazyarea/.bash_profile"
 echo "sed -i \"s/export\ PATH/export\ PATH=\/home\/lazyarea\/bin/\" /home/lazyarea/.bash_profile"
 
-echo ""
-echo "ex) install git"
-echo "yum --installroot=${CHROOT_HOME} --releasever=7 install git
