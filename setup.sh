@@ -2,7 +2,7 @@
 
 CHROOT_HOME=/home/chroot
 CHROOT_DIR="bin dev home lib64 usr/bin etc/bash_completion.d"
-CHROOT_CMD="/usr/bin/git /usr/bin/ls /bin/bash"
+CHROOT_CMD="/usr/bin/git /usr/bin/ls /bin/bash /usr/bin/rpm"
 
 #--------------------------------------------------
 # install dir
@@ -92,3 +92,7 @@ echo "echo \"/usr/bin/rbash\" >> /etc/shells"
 echo "chown root. /home/lazyarea/.bash_profile"
 echo "chmod 755 /home/lazyarea/.bash_profile"
 echo "sed -i \"s/export\ PATH/export\ PATH=\/home\/lazyarea\/bin/\" /home/lazyarea/.bash_profile"
+
+echo ""
+echo "ex) install git"
+echo "yum --installroot=${CHROOT_HOME} --releasever=7 install git
