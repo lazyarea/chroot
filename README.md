@@ -1,1 +1,1 @@
-# ssh with jail and limited commands.
+# ssh with jail

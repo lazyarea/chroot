@@ -82,17 +82,3 @@ echo "        ChrootDirectory /home/chroot"
 echo ""
 echo "ex) install git"
 echo "yum --installroot=${CHROOT_HOME} --releasever=7 install git"
-
-echo ""
-if [  -e "/bin/rbash" ]; then
-  echo "/bin/rbash is already exists."
-  exit
-fi
-echo "ex) user setting"
-echo "ln -s /bin/bash /bin/rbash"
-echo "echo \"/bin/rbash\" >> /etc/shells"
-echo "echo \"/usr/bin/rbash\" >> /etc/shells"
-echo "chown root. /home/lazyarea/.bash_profile"
-echo "chmod 755 /home/lazyarea/.bash_profile"
-echo "sed -i \"s/export\ PATH/export\ PATH=\/home\/lazyarea\/bin/\" /home/lazyarea/.bash_profile"
-
