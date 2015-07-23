@@ -1,7 +1,7 @@
 #!/bin/sh
 
 CHROOT_HOME=/home/chroot
-CHROOT_DIR="bin dev home lib64 usr/bin etc/bash_completion.d"
+CHROOT_DIR="bin dev dev/pts home lib64 usr/bin etc/bash_completion.d"
 CHROOT_CMD="/usr/bin/git /usr/bin/ls /bin/bash /usr/bin/rpm"
 
 #--------------------------------------------------
@@ -27,7 +27,7 @@ if [ ! -e "${CHROOT_HOME}/etc/bashrc" ]; then
 fi
 
 #--------------------------------------------------
-# install dev/{tty,null,urandom}
+# install dev/{tty,null,urandom,pts}
 #--------------------------------------------------
 if [ ! -e "${CHROOT_HOME}/dev/tty" ]; then
   mknod -m 666 "${CHROOT_HOME}/dev/tty" c 5 0
@@ -37,6 +37,9 @@ if [ ! -e "${CHROOT_HOME}/dev/null" ]; then
 fi
 if [ ! -e "${CHROOT_HOME}/dev/urandom" ]; then
   mknod -m 666 "${CHROOT_HOME}/dev/urandom" c 1 9
+fi
+if [ ! -e "${CHROOT_HOME}/dev/pts" ]; then
+  mount -t devpts devpts ${CHROOT_HOME}/dev/pts
 fi
 
 #--------------------------------------------------
